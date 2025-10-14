@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BookingModule } from './booking/booking.module';
+import { Event } from './entities/event.entity';
+import { Booking } from './entities/booking.entity';
 
 @Module({
   imports: [
@@ -12,10 +13,11 @@ import { AppService } from './app.service';
       username: 'myuser',
       password: 'mypassword',
       database: 'mydatabase',
-      entities: []
+      entities: [Event, Booking]
     }),
+    BookingModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany, ForeignKey, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, Index, ManyToOne } from 'typeorm';
 import { Event } from './event.entity';
 
+@Index(["userId", "eventId"], { unique: true })
 @Entity()
 export class Booking {
   @PrimaryGeneratedColumn()
