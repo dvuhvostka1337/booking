@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres # Specifies the PostgreSQL image and version
+    environment:
+      POSTGRES_DB: mydatabase # Sets the default database name
+      POSTGRES_USER: myuser # Sets the database user
+      POSTGRES_PASSWORD: mypassword # Sets the database password
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persists data to a named volume
+      # - ./init-scripts:/docker-entrypoint-initdb.d # Optional: Mounts a directory for init scripts
+    ports:
+      - "5432:5432" # Maps host port 5432 to container port 5432
+    restart: always # Ensures the container restarts automatically
+
+volumes:
+  pgdata: # Defines the named volume for data persistence
